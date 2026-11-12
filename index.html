@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مجمع النخبة الطبي التخصصي | الرعاية الصحية المتكاملة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0369a1;
+            --primary-light: #e0f2fe;
+            --secondary: #0f172a;
+            --accent: #0ea5e9;
+            --success: #059669;
+            --bg-light: #f8fafc;
+            --text-muted: #64748b;
+            --white: #ffffff;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.06);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--secondary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background: var(--secondary);
+            color: #cbd5e1;
+            padding: 8px 5%;
+            font-size: 0.85rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .top-bar span i {
+            color: var(--accent);
+            margin-left: 6px;
+        }
+
+        /* Navbar */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: var(--primary);
+            cursor: pointer;
+        }
+        .logo-icon {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: var(--white);
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        .nav-links li a {
+            text-decoration: none;
+            color: var(--secondary);
+            font-weight: 700;
+            font-size: 1rem;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .nav-links li a:hover, .nav-links li a.active {
+            background: var(--primary-light);
+            color: var(--primary);
+        }
+        .btn-book-nav {
+            background: var(--primary);
+            color: var(--white);
+            padding: 10px 22px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.3s;
+            cursor: pointer;
+            border: none;
+            font-size: 0.95rem;
+        }
+        .btn-book-nav:hover {
+            background: #075985;
+            transform: translateY(-2px);
+        }
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--secondary);
+            cursor: pointer;
+        }
+
+        /* Pages Container */
+        .page-section {
+            display: none;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+        .page-section.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Common Components */
+        .container {
+            padding: 60px 5%;
+            max-width: 1300px;
+            margin: auto;
+        }
+        .page-header {
+            background: linear-gradient(135deg, var(--secondary), #1e293b);
+            color: var(--white);
+            padding: 60px 5%;
+            text-align: center;
+        }
+        .page-header h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 10px;
+        }
+        .page-header p {
+            color: #94a3b8;
+            font-size: 1.1rem;
+        }
+
+        /* Home: Hero */
+        .hero {
+            background: linear-gradient(to left, #ffffff 45%, #e0f2fe 100%);
+            padding: 70px 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        .hero-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        .badge {
+            background: var(--primary-light);
+            color: var(--primary);
+            padding: 6px 15px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        .hero-text h1 {
+            font-size: 2.9rem;
+            font-weight: 900;
+            line-height: 1.25;
+            margin-bottom: 20px;
+        }
+        .hero-text h1 span {
+            color: var(--primary);
+        }
+        .hero-text p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+        .hero-btns {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .btn-outline {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 700;
+            background: transparent;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn-outline:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+        .hero-img {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+        .hero-img img {
+            width: 100%;
+            max-width: 520px;
+            border-radius: 24px;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15);
+        }
+
+        /* Stats Bar */
+        .stats {
+            background: var(--primary);
+            color: var(--white);
+            padding: 40px 5%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+        .stat-item h3 {
+            font-size: 2.2rem;
+            font-weight: 900;
+        }
+        .stat-item p {
+            color: #bae6fd;
+            font-weight: 500;
+        }
+
+        /* Grid Cards */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            border: 1px solid #f1f5f9;
+            transition: 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        /* Doctors Cards */
+        .doctor-card {
+            background: var(--white);
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: 0.3s;
+        }
+        .doctor-card:hover {
+            transform: translateY(-6px);
+        }
+        .doctor-card img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+        }
+        .doctor-info {
+            padding: 25px;
+        }
+        .doctor-specialty {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+        .doctor-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        .doctor-meta {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        /* Booking Form & Ticket */
+        .booking-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            background: var(--white);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            font-size: 1rem;
+            outline: none;
+        }
+        .form-group input:focus, .form-group select:focus {
+            border-color: var(--primary);
+        }
+        .ticket-box {
+            background: #f0fdf4;
+            border: 2px dashed var(--success);
+            padding: 30px;
+            border-radius: 16px;
+            text-align: center;
+            display: none;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            color: #94a3b8;
+            padding: 60px 5% 20px;
+            margin-top: 60px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-grid h4 {
+            color: var(--white);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        .footer-grid ul {
+            list-style: none;
+        }
+        .footer-grid ul li {
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        .footer-grid ul li:hover {
+            color: var(--accent);
+        }
+        .copyright {
+            border-top: 1px solid #1e293b;
+            padding-top: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 72px;
+                right: 0;
+                width: 100%;
+                background: var(--white);
+                padding: 20px;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+            }
+            .nav-links.show { display: flex; }
+            .hero-text h1 { font-size: 2.1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Info Bar -->
+    <div class="top-bar">
+        <div>
+            <span><i class="fa-solid fa-phone-volume"></i> الرقم الموحد: 920001234</span>
+            <span style="margin-right: 15px;"><i class="fa-solid fa-location-dot"></i> شارع التحلية، البرج الطبي</span>
+        </div>
+        <div>
+            <span><i class="fa-solid fa-clock"></i> نعمل على مدار 24 ساعة للطوارئ</span>
+        </div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="logo" onclick="navigateTo('home')">
+            <div class="logo-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+            <div>مجمع النخبة الطبي</div>
+        </div>
+
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a onclick="navigateTo('home')" id="nav-home" class="active">الرئيسية</a></li>
+            <li><a onclick="navigateTo('departments')" id="nav-departments">التخصصات الطبية</a></li>
+            <li><a onclick="navigateTo('doctors')" id="nav-doctors">الأطباء</a></li>
+            <li><a onclick="navigateTo('articles')" id="nav-articles">الموسوعة الطبية</a></li>
+            <li><a onclick="navigateTo('booking')" id="nav-booking">حجز موعد</a></li>
+        </ul>
+
+        <button class="btn-book-nav" onclick="navigateTo('booking')">احجز الآن</button>
+    </header>
+
+    <!-- ================= PAGE 1: HOME ================= -->
+    <div id="page-home" class="page-section active">
+        <section class="hero">
+            <div class="hero-text">
+                <span class="badge"><i class="fa-solid fa-award"></i> معتمد من هيئة الاعتماد الصحي</span>
+                <h1>رعاية طبية فائقة بأحدث <span>التقنيات العالمية</span></h1>
+                <p>نجمع بين الخبرة الطبية العريقة وأحدث الأجهزة التشخيصية لنمنحك ولعائلتك تجربة علاجية آمنة ومريحة تحت سقف واحد.</p>
+                <div class="hero-btns">
+                    <button class="btn-book-nav" style="padding: 13px 30px;" onclick="navigateTo('booking')">احجز موعدك الآن</button>
+                    <button class="btn-outline" onclick="navigateTo('doctors')">تصفح الأطباء</button>
+                </div>
+            </div>
+            <div class="hero-img">
+                <img src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?auto=format&fit=crop&w=700&q=80" alt="الطاقم الطبي">
+            </div>
+        </section>
+
+        <!-- Stats -->
+        <section class="stats">
+            <div class="stat-item">
+                <h3>+45</h3>
+                <p>طبيب استشاري وأخصائي</p>
+            </div>
+            <div class="stat-item">
+                <h3>+18,000</h3>
+                <p>مراجع سعيد سنوياً</p>
+            </div>
+            <div class="stat-item">
+                <h3>14</h3>
+                <p>عيادة تخصصية متكاملة</p>
+            </div>
+            <div class="stat-item">
+                <h3>99%</h3>
+                <p>نسبة رضا المرضى</p>
+            </div>
+        </section>
+
+        <!-- Why Choose Us -->
+        <section class="container">
+            <div style="text-align: center; margin-bottom: 50px;">
+                <h2 style="font-size: 2.2rem; font-weight: 800;">لماذا يختارنا المرضى؟</h2>
+                <p style="color: var(--text-muted);">معايير صارمة في الجودة والتعقيم وسرعة الإنجاز</p>
+            </div>
+            <div class="grid-3">
+                <div class="card">
+                    <i class="fa-solid fa-microscope" style="font-size: 2.2rem; color: var(--primary); margin-bottom: 15px;"></i>
+                    <h3>مختبرات وأشعة متطورة</h3>
+                    <p style="color: var(--text-muted); margin-top: 10px;">نتائج تحاليل دقيقة وفورية مرتبطة بملفك الطبي الإلكتروني مباشرة دون انتظار.</p>
+                </div>
+                <div class="card">
+                    <i class="fa-solid fa-user-doctor" style="font-size: 2.2rem; color: var(--primary); margin-bottom: 15px;"></i>
+                    <h3>نخبة الاستشاريين</h3>
+                    <p style="color: var(--text-muted); margin-top: 10px;">أطباء حاصلون على البورد الأمريكي والأوروبي في مختلف التخصصات الدقيقة.</p>
+                </div>
+                <div class="card">
+                    <i class="fa-solid fa-shield-heart" style="font-size: 2.2rem; color: var(--primary); margin-bottom: 15px;"></i>
+                    <h3>قبول جميع شركات التأمين</h3>
+                    <p style="color: var(--text-muted); margin-top: 10px;">موافقات فورية على التأمين الطبي لتسهيل رحلتك العلاجية دون أي تعقيدات.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ================= PAGE 2: DEPARTMENTS ================= -->
+    <div id="page-departments" class="page-section">
+        <div class="page-header">
+            <h1>التخصصات والعيادات الطبية</h1>
+            <p>نغطي كافة التخصصات الطبية بأحدث الأجهزة التشخيصية والعلاجية</p>
+        </div>
+        <div class="container">
+            <div class="grid-3">
+                <div class="card">
+                    <i class="fa-solid fa-heart-pulse" style="font-size: 2.5rem; color: #e11d48; margin-bottom: 15px;"></i>
+                    <h3>عيادة أمراض القلب والشرايين</h3>
+                    <p style="color: var(--text-muted); margin: 10px 0;">تخطيط القلب، الإيكو، متابعة ضغط الدم، وفحص الجهد القلبي بأحدث الأجهزة.</p>
+                    <p style="font-weight: 700; color: var(--primary);">سعر الكشفية: 250 ريال</p>
+                    <button class="btn-outline" style="margin-top: 15px; width: 100%;" onclick="bookDepartment('عيادة أمراض القلب')">احجز في هذا القسم</button>
+                </div>
+                <div class="card">
+                    <i class="fa-solid fa-tooth" style="font-size: 2.5rem; color: var(--accent); margin-bottom: 15px;"></i>
+                    <h3>مركز طب وتجميل الأسنان</h3>
+                    <p style="color: var(--text-muted); margin: 10px 0;">زراعة الأسنان الفورية، ابتسامة هوليوود، التقويم الشفاف، وعلاج الجذور بالميكروسكوب.</p>
+                    <p style="font-weight: 700; color: var(--primary);">سعر الكشفية: 150 ريال</p>
+                    <button class="btn-outline" style="margin-top: 15px; width: 100%;" onclick="bookDepartment('مركز طب الأسنان')">احجز في هذا القسم</button>
+                </div>
+                <div class="card">
+                    <i class="fa-solid fa-baby" style="font-size: 2.5rem; color: #f59e0b; margin-bottom: 15px;"></i>
+                    <h3>عيادة طب الأطفال وحديثي الولادة</h3>
+                    <p style="color: var(--text-muted); margin: 10px 0;">متابعة النمو، التطعيمات الأساسية، وعلاج حساسية الصدر والربو لدى الأطفال.</p>
+                    <p style="font-weight: 700; color: var(--primary);">سعر الكشفية: 200 ريال</p>
+                    <button class="btn-outline" style="margin-top: 15px; width: 100%;" onclick="bookDepartment('عيادة طب الأطفال')">احجز في هذا القسم</button>
+                </div>
+                <div class="card">
+                    <i class="fa-solid fa-eye" style="font-size: 2.5rem; color: #10b981; margin-bottom: 15px;"></i>
+                    <h3>عيادة طب وجراحة العيون</h3>
+                    <p style="color: var(--text-muted); margin: 10px 0;">فحص قاع العين، تصحيح النظر بالليزك، وعلاج المياه البيضاء والزرقاء.</p>
+                    <p style="font-weight: 700; color: var(--primary);">سعر الكشفية: 220 ريال</p>
+                    <button class="btn-outline" style="margin-top: 15px; width: 100%;" onclick="bookDepartment('عيادة العيون')">احجز في هذا القسم</button>
+                </div>
+                <div class="card">
+                    <i class="fa-solid fa-bone" style="font-size: 2.5rem; color: #6366f1; margin-bottom: 15px;"></i>
+                    <h3>عيادة العظام والمفاصل</h3>
+                    <p style="color: var(--text-muted); margin: 10px 0;">علاج إصابات الملاعب، خشونة الركبة، آلام العمود الفقري، والعلاج الطبيعي.</p>
+                    <p style="font-weight: 700; color: var(--primary);">سعر الكشفية: 250 ريال</p>
+                    <button class="btn-outline" style="margin-top: 15px; width: 100%;" onclick="bookDepartment('عيادة العظام')">احجز في هذا القسم</button>
+                </div>
+                <div class="card">
+                    <i class="fa-solid fa-wand-magic-sparkles" style="font-size: 2.5rem; color: #ec4899; margin-bottom: 15px;"></i>
+                    <h3>عيادة الجلدية والليزر</h3>
+                    <p style="color: var(--text-muted); margin: 10px 0;">علاج الأمراض الجلدية، إزالة الشعر بالليزر، نضارة البشرة، وعلاج تساقط الشعر.</p>
+                    <p style="font-weight: 700; color: var(--primary);">سعر الكشفية: 200 ريال</p>
+                    <button class="btn-outline" style="margin-top: 15px; width: 100%;" onclick="bookDepartment('عيادة الجلدية والليزر')">احجز في هذا القسم</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= PAGE 3: DOCTORS ================= -->
+    <div id="page-doctors" class="page-section">
+        <div class="page-header">
+            <h1>نخبة الأطباء والاستشاريين</h1>
+            <p>اختر طبيبك واحجز موعدك مباشرة بكل سهولة</p>
+        </div>
+        <div class="container">
+            <div class="grid-3">
+                <div class="doctor-card">
+                    <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=600&q=80" alt="د. طارق المنصور">
+                    <div class="doctor-info">
+                        <div class="doctor-specialty">استشاري أمراض القلب</div>
+                        <h3>د. طارق عبدالله المنصور</h3>
+                        <p class="doctor-meta">البورد الأمريكي في أمراض القلب - خبرة 18 عاماً</p>
+                        <button class="btn-book-nav" style="width: 100%;" onclick="bookDoctor('د. طارق المنصور - قلب')">حجز موعد مع الطبيب</button>
+                    </div>
+                </div>
+                <div class="doctor-card">
+                    <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=600&q=80" alt="د. سارة العتيبي">
+                    <div class="doctor-info">
+                        <div class="doctor-specialty">استشارية طب الأطفال</div>
+                        <h3>د. سارة محمد العتيبي</h3>
+                        <p class="doctor-meta">زمالة طب الأطفال وحديثي الولادة - خبرة 14 عاماً</p>
+                        <button class="btn-book-nav" style="width: 100%;" onclick="bookDoctor('د. سارة العتيبي - أطفال')">حجز موعد مع الطبيبة</button>
+                    </div>
+                </div>
+                <div class="doctor-card">
+                    <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=600&q=80" alt="د. خالد الشهري">
+                    <div class="doctor-info">
+                        <div class="doctor-specialty">أخصائي أول زراعة الأسنان</div>
+                        <h3>د. خالد سعد الشهري</h3>
+                        <p class="doctor-meta">ماجستير جراحة الفم وزراعة الأسنان - خبرة 12 عاماً</p>
+                        <button class="btn-book-nav" style="width: 100%;" onclick="bookDoctor('د. خالد الشهري - أسنان')">حجز موعد مع الطبيب</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= PAGE 4: ARTICLES ================= -->
+    <div id="page-articles" class="page-section">
+        <div class="page-header">
+            <h1>الموسوعة والنصائح الطبية</h1>
+            <p>مقالات موثوقة يكتبها أطباؤنا لتعزيز وعيك الصحي</p>
+        </div>
+        <div class="container">
+            <div class="grid-3">
+                <div class="card">
+                    <span class="badge">صحة القلب</span>
+                    <h3 style="margin-bottom: 10px;">5 عادات يومية تحمي قلبك من ارتفاع الضغط</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 15px;">تعرف على أهم التغييرات البسيطة في نظامك الغذائي والرياضي التي تقيك من أمراض الشرايين...</p>
+                    <small style="color: var(--primary); font-weight: 700;">بقلم: د. طارق المنصور</small>
+                </div>
+                <div class="card">
+                    <span class="badge">طب الأسنان</span>
+                    <h3 style="margin-bottom: 10px;">متى تحتاج إلى زراعة الأسنان؟ وما هي نسب نجاحها؟</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 15px;">شرح مبسط حول تقنيات الزراعة الفورية الحديثة وكيفية العناية بالأسنان المزروعة مدى الحياة...</p>
+                    <small style="color: var(--primary); font-weight: 700;">بقلم: د. خالد الشهري</small>
+                </div>
+                <div class="card">
+                    <span class="badge">صحة الطفل</span>
+                    <h3 style="margin-bottom: 10px;">دليل الأمهات للتعامل مع حساسية الصدر الموسمية</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 15px;">كيف تميزين بين نزلة البرد العادية وحساسية الصدر عند الأطفال، ومتى يجب زيارة الطبيب فوراً...</p>
+                    <small style="color: var(--primary); font-weight: 700;">بقلم: د. سارة العتيبي</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= PAGE 5: BOOKING ================= -->
+    <div id="page-booking" class="page-section">
+        <div class="page-header">
+            <h1>نظام حجز المواعيد الإلكتروني</h1>
+            <p>احجز موعدك في أقل من دقيقة واحصل على رقم تأكيد فوري</p>
+        </div>
+        <div class="container">
+            <div class="booking-wrapper">
+                <div>
+                    <h2 style="margin-bottom: 20px; color: var(--primary);">بيانات المراجع</h2>
+                    <form id="bookingForm" onsubmit="confirmBooking(event)">
+                        <div class="form-group">
+                            <label>الاسم الكامل للمراجع *</label>
+                            <input type="text" id="patientName" placeholder="أدخل اسمك الثلاثي" required>
+                        </div>
+                        <div class="form-group">
+                            <label>رقم الجوال (لإرسال رسالة التأكيد) *</label>
+                            <input type="tel" id="patientPhone" placeholder="05XXXXXXXX" required>
+                        </div>
+                        <div class="form-group">
+                            <label>القسم أو الطبيب المطلوب *</label>
+                            <select id="selectedService" required>
+                                <option value="">-- اختر القسم أو الطبيب --</option>
+                                <option value="عيادة أمراض القلب">عيادة أمراض القلب</option>
+                                <option value="مركز طب الأسنان">مركز طب الأسنان</option>
+                                <option value="عيادة طب الأطفال">عيادة طب الأطفال</option>
+                                <option value="عيادة العيون">عيادة العيون</option>
+                                <option value="عيادة العظام">عيادة العظام</option>
+                                <option value="عيادة الجلدية والليزر">عيادة الجلدية والليزر</option>
+                                <option value="د. طارق المنصور - قلب">د. طارق المنصور (قلب)</option>
+                                <option value="د. سارة العتيبي - أطفال">د. سارة العتيبي (أطفال)</option>
+                                <option value="د. خالد الشهري - أسنان">د. خالد الشهري (أسنان)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>التاريخ المفضل *</label>
+                            <input type="date" id="bookingDate" required>
+                        </div>
+                        <button type="submit" class="btn-book-nav" style="width: 100%; padding: 14px; font-size: 1.1rem;">تأكيد الحجز الآن</button>
+                    </form>
+                </div>
+
+                <div>
+                    <div style="background: var(--bg-light); padding: 30px; border-radius: 16px; margin-bottom: 20px;">
+                        <h3 style="margin-bottom: 15px;"><i class="fa-solid fa-circle-info" style="color: var(--primary);"></i> معلومات هامة قبل الحضور</h3>
+                        <ul style="padding-right: 20px; color: var(--text-muted);">
+                            <li style="margin-bottom: 10px;">يرجى الحضور قبل الموعد بـ 15 دقيقة لفتح الملف الطبي.</li>
+                            <li style="margin-bottom: 10px;">إحضار الهوية الوطنية أو الإقامة وبطاقة التأمين الطبي.</li>
+                            <li>يمكنك تعديل أو إلغاء الموعد مجاناً عبر الاتصال بالرقم الموحد.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Electronic Ticket (Shows after submit) -->
+                    <div class="ticket-box" id="ticketBox">
+                        <i class="fa-solid fa-circle-check" style="font-size: 3rem; color: var(--success); margin-bottom: 10px;"></i>
+                        <h3 style="color: var(--success); margin-bottom: 10px;">تم تأكيد حجزك بنجاح!</h3>
+                        <p>رقم التذكرة المرجعي: <strong id="ticketNumber" style="font-size: 1.2rem;">#ELITE-8492</strong></p>
+                        <hr style="margin: 15px 0; border-color: #bbf7d0;">
+                        <p id="ticketDetails" style="font-size: 0.95rem; color: var(--secondary);"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <h4>مجمع النخبة الطبي</h4>
+                <p>صرح طبي متكامل يقدم أرقى خدمات الرعاية الصحية بأحدث التقنيات وأمهر الكوادر الطبية.</p>
+            </div>
+            <div>
+                <h4>روابط سريعة</h4>
+                <ul>
+                    <li onclick="navigateTo('home')">الرئيسية</li>
+                    <li onclick="navigateTo('departments')">التخصصات الطبية</li>
+                    <li onclick="navigateTo('doctors')">الأطباء والاستشاريون</li>
+                    <li onclick="navigateTo('booking')">حجز موعد إلكتروني</li>
+                </ul>
+            </div>
+            <div>
+                <h4>تواصل معنا</h4>
+                <ul>
+                    <li><i class="fa-solid fa-phone"></i> 920001234</li>
+                    <li><i class="fa-solid fa-envelope"></i> info@elite-medical.com</li>
+                    <li><i class="fa-solid fa-location-dot"></i> شارع التحلية - البرج الطبي</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            جميع الحقوق محفوظة © 2026 مجمع النخبة الطبي التخصصي | تصميم وبرمجة احترافية
+        </div>
+    </footer>
+
+    <script>
+        // التنقل بين الصفحات
+        function navigateTo(pageId) {
+            // إخفاء جميع الصفحات
+            document.querySelectorAll('.page-section').forEach(sec => sec.classList.remove('active'));
+            // إزالة التفعيل من روابط القائمة
+            document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('active'));
+            
+            // إظهار الصفحة المطلوبة
+            document.getElementById('page-' + pageId).classList.add('active');
+            const activeLink = document.getElementById('nav-' + pageId);
+            if(activeLink) activeLink.classList.add('active');
+
+            // إغلاق قائمة الجوال إن كانت مفتوحة
+            document.getElementById('navLinks').classList.remove('show');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // قائمة الجوال
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('show');
+        }
+
+        // الحجز المباشر من صفحة الأقسام
+        function bookDepartment(deptName) {
+            navigateTo('booking');
+            document.getElementById('selectedService').value = deptName;
+        }
+
+        // الحجز المباشر من صفحة الأطباء
+        function bookDoctor(docName) {
+            navigateTo('booking');
+            document.getElementById('selectedService').value = docName;
+        }
+
+        // تأكيد الحجز وإصدار التذكرة
+        function confirmBooking(e) {
+            e.preventDefault();
+            const name = document.getElementById('patientName').value;
+            const service = document.getElementById('selectedService').value;
+            const date = document.getElementById('bookingDate').value;
+            const randomId = Math.floor(1000 + Math.random() * 9000);
+
+            document.getElementById('ticketNumber').innerText = '#ELITE-' + randomId;
+            document.getElementById('ticketDetails').innerHTML = `
+                <strong>المراجع:</strong> ${name}<br>
+                <strong>القسم/الطبيب:</strong> ${service}<br>
+                <strong>التاريخ:</strong> ${date}
+            `;
+            document.getElementById('ticketBox').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
